@@ -1,9 +1,5 @@
 @import '/node_modules/@angular/material/core/theming/prebuilt/deeppurple-amber.css';
 
-md-sidenav-layout.m2app-dark {
-  background: black;
-}
-
 .app-content {
   padding: 20px;
 }
