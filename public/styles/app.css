@@ -1,4 +1,4 @@
-@import '/node_modules/@angular/material/core/theming/prebuilt/deeppurple-amber.css';
+@import 'blue-theme.css';
 
 .app-content {
   padding: 20px;
@@ -68,4 +68,21 @@
 
 .app-progress {
   margin: 20px;
+}
+
+.md-full-width{
+  width: 100%;
+}
+
+.md-input-prefix{
+  width: 30px;
+}
+
+.info-diagnosis{
+  width: 500px;
+  float:left;
+}
+
+div.clear{
+  clear: both;
 }

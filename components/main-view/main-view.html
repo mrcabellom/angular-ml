@@ -1,71 +1,10 @@
 <main>
   <router-outlet></router-outlet>
-
-    <md-toolbar color="warn">
-      Generate patient treatment
-      <span class="app-toolbar-filler"></span>
-    </md-toolbar>
-
-    <div class="app-content">
-      <md-card class="app-input-section" style="width: 500px">
-        <form >
-        <md-input type="number" placeholder="Clump Thickness" max="10" min="1" style="width:100%">
-        </md-input>
-         <md-input type="number" max="10" min="1" style="width:100%">
-          <label md-prefix>Uniformity Cell Size</label>
-        </md-input>
-         <md-input type="number" max="10" min="1" style="width:100%">
-          <label md-prefix>Uniformity Cell Shape</label>
-        </md-input>
-         <md-input type="number" max="10" min="1" style="width:100%">
-          <label md-prefix>Marginal Adhesion</label>
-        </md-input>
-         <md-input type="number" max="10" min="1" style="width:100%">
-          <label md-prefix>Single Epithelial Cell Size</label>
-        </md-input>
-         <md-input type="number" max="10" min="1" style="width:100%">
-          <label md-prefix>Bare Nuclei</label>
-        </md-input>
-        <md-input type="number" max="10" min="1" style="width:100%">
-          <label md-prefix>Bland Chromatin</label>
-        </md-input>
-         <md-input type="number" max="10" min="1" style="width:100%">
-          <label md-prefix>Normal Nucleoli</label>
-        </md-input>
-         <md-input type="number" max="10" min="1" style="width:100%">
-          <label md-prefix>Mitoses</label>
-        </md-input>
-         <md-input type="number" max="10" min="1" style="width:100%">
-          <span md-prefix>
-          <i class="material-icons app-input-icon">motorcycle</i>
-          &nbsp;
-        </span>
-        </md-input>
-        </form>
-        <button md-raised-button md-tooltip="This is a tooltip!">Breast cancer diagnosis</button>
-      </md-card>
-
-      <md-card>
-        <md-spinner class="app-spinner"></md-spinner>
-        <md-spinner color="accent" class="app-spinner"></md-spinner>
-      </md-card>      
-
-      <md-card>
-        <md-tab-group>
-          <md-tab label="Earth">
-            <p>EARTH</p>
-          </md-tab>
-          <md-tab label="Fire">
-            <p>FIRE</p>
-          </md-tab>
-        </md-tab-group>
-      </md-card>
-      <md-card>
-        <p>Last dialog result: {{lastDialogResult}}</p>
-        <button md-raised-button (click)="openDialog()">DIALOG</button>
-        <button md-raised-button (click)="showSnackbar()">SNACKBAR</button>
-      </md-card>
-
-    </div>
-
+  <md-toolbar color="primary">
+    e-Patient medical center
+    <span class="app-toolbar-filler"></span>
+  </md-toolbar>
+  <div class="app-content">
+    <patient-info></patient-info>
+  </div>
 </main>
