@@ -23,7 +23,7 @@
         <md-input placeholder="Mitoses" type="number" max="10" min="1" class="md-full-width">
         </md-input>
     </form>
-    <button md-raised-button md-tooltip="Breast cancer">Breast cancer diagnosis</button>
+    <button (click)="checkBreastCancerDiagnosis()" md-raised-button md-tooltip="Breast cancer">Breast cancer diagnosis</button>
 </md-card>
 <md-card class="info-diagnosis">
     <div class="cancer-notify">

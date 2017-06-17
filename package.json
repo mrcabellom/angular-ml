@@ -5,11 +5,12 @@
   "author": "Rodrigo Cabello",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "concurrently \"npm run build\" \"lite-server\"",
-    "build": "concurrently \"tsc\" \"npm run bundle\"",
+    "start": "npm run build && node public/js/main.js",
+    "build": "tsc && npm run copy && npm run bundle",
+    "copy":"copyfiles app/**/*.html public/js/",
     "bundle":"concurrently \"npm run bundle:polyfills\" \"npm run bundle:dev\"",
-    "bundle:dev": "browserify public/js/startup/startup.js -o public/js/startup/startup.bundle.js",
-    "bundle:polyfills":"browserify public/js/startup/polyfills.js -o public/js/startup/polyfills.bundle.js"
+    "bundle:dev": "browserify public/js/app/startup/startup.js -o public/js/app/startup/startup.bundle.js",
+    "bundle:polyfills":"browserify public/js/app/startup/polyfills.js -o public/js/app/startup/polyfills.bundle.js"
   },
   "dependencies": {
     "@angular/common": "2.4.7",
@@ -27,17 +28,22 @@
     "jquery": "3.1.1",
     "rxjs": "5.1.0",
     "typescript": "2.1.6",
-    "zone.js": "~0.7.6"
+    "zone.js": "~0.7.6",
+    "urllib-sync":"1.1.4"
   },
   "devDependencies": {
+    "@types/express": "^4.0.34",
     "@angular/compiler-cli": "^2.0.0",
     "angular-cli": "^1.0.0-beta.16",
+    "copyfiles":"1.2.0",
     "@types/node": "7.0.5",
     "@types/hammerjs":"2.0.34",
     "typescript": "2.1.6",
-    "lite-server": "2.3.0",
     "browserify": "14.3.0",
     "concurrently": "3.2.0",
-    "ts-helpers": "1.1.2"
+    "ts-helpers": "1.1.2",
+    "express": "4.14.0",
+    "body-parser":"1.17.2",
+    "mustache-express": "1.2.4"
   }
 }
