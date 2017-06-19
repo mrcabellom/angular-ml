@@ -43,11 +43,11 @@
     </div>   
     <div *ngIf="hasBreastCancer" class="treatment-info">
         <form #treatmentForm="ngForm" (ngSubmit)="generateTreatment()">
-            <md-input type="number" required [(ngModel)]="treatmentInfo.weight" name="weight" placeholder="Weight (kg)" max="10" min="1" class="md-full-width">
+            <md-input type="number" required [(ngModel)]="treatmentInfo.weight" name="weight" placeholder="Weight (kg)" class="md-full-width">
             </md-input>
-            <md-input placeholder="Height (cm)" required [(ngModel)]="treatmentInfo.height" name="height" class="md-full-width" type="number" max="10" min="1">
+            <md-input placeholder="Height (cm)" required [(ngModel)]="treatmentInfo.height" name="height" class="md-full-width" type="number">
             </md-input>
-            <button type="submit" [disabled]="!patientForm.form.valid" md-raised-button md-tooltip="Treatment">Generate treatment</button>
+            <button type="submit" [disabled]="!treatmentForm.form.valid" md-raised-button md-tooltip="Treatment">Generate treatment</button>
         </form>
     </div>
 </md-card>

@@ -1,0 +1,22 @@
+<div id="treatment-section" *ngIf="treatment">
+    <h4>Treatment for breast cancer</h4>
+    <md-card class="notifications" [ngClass]="notification.type" *ngFor=" let notification of treatment.notifications ">
+        <p>{{notification.description}}</p>
+        <span class="notif-date ">{{notification.date | date:'shortDate'}}</span>
+    </md-card>
+    <md-card class="app-input-section " *ngFor="let regimen of treatment.regimens ">
+        <h4>Regimen: {{regimen.name}}</h4>
+        <div class="chemotherapy-cycle " *ngFor="let cycle of regimen.cycles ">
+            <div class="title ">{{cycle.name}}</div>
+            <span class="start-date ">{{cycle.start | date:'shortDate'}}</span>
+            <span class="end-date ">{{cycle.end | date:'shortDate'}}</span>
+            <div class="drugs-section ">
+                <div class="drug-info " *ngFor="let drug of cycle.drugs ">
+                    <span class="drug-name ">{{drug.name}}</span>
+                    <span class="drug-dose ">{{drug.dose}} (mg)</span>
+                    <span class="drug-date ">{{drug.date | date:'shortDate'}}</span>
+                </div>
+            </div>
+        </div>
+    </md-card>
+</div>

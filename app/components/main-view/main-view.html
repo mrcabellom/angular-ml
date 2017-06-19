@@ -5,7 +5,8 @@
     <span class="app-toolbar-filler"></span>
   </md-toolbar>
   <div class="app-content">
-    <patient-info></patient-info>
+    <patient-info (notify)='onNotify($event)'></patient-info>
+    <treatment-info [treatment]="generatedTreatment"></treatment-info>
   </div>
   <custom-spinner></custom-spinner>
 </main>

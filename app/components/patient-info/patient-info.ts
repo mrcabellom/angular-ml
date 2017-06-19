@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { MlService } from '../../services/azureml.service';
 import { Patient } from './patient';
 import { PredictiveResponse } from './predictiveResponse';
@@ -9,6 +9,7 @@ import { PredictiveResponse } from './predictiveResponse';
     providers: [MlService]
 })
 export class PatientInfo {
+    @Output() notify: EventEmitter<any> = new EventEmitter<any>();
     errorMessage: string;
     public showCancerInfo = false;
     public hasBreastCancer = false
@@ -31,7 +32,7 @@ export class PatientInfo {
         this.mlService.generateTreatment(this.treatmentInfo)
             .subscribe(
             treatmentResponse => {
-
+                this.notify.emit(treatmentResponse);
             }
             ),
             error => this.errorMessage = error;
