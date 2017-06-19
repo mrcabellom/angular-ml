@@ -17,12 +17,15 @@ patientRouter.post('/api/predictiveml', (request: express.Request, response: exp
         },
         data: request.body
     });
-
     if(responseML.error){
         response.status(500).send(responseML.error.details);
     }else{
-        response.status(200).json(JSON.parse(responseML.data.toString()));
+        response.status(200).jsonp(JSON.parse(responseML.data.toString()));
     }
+});
+
+patientRouter.post('/api/predictiveml/treatment', (request: express.Request, response: express.Response) => {
+    
 });
 
 export default patientRouter;

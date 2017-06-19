@@ -1,46 +1,54 @@
 <md-card class="app-input-section info-diagnosis">
-    <form>
+    <form #patientForm="ngForm" (ngSubmit)="checkBreastCancerDiagnosis()">
         <h4>Patient Info Diagnosis</h4>
-        <md-input type="number" placeholder="Clump Thickness" max="10" min="1" class="md-full-width">
+        <md-input type="number" required [(ngModel)]="patientInfo.clumpThickness" name="clumpThickness" placeholder="Clump Thickness" max="10"
+            min="1" class="md-full-width">
             <span md-prefix>
           <i class="material-icons app-input-icon">info</i>
         </span>
         </md-input>
-        <md-input placeholder="Uniformity Cell Size" class="md-full-width" type="number" max="10" min="1">
+        <md-input required [(ngModel)]="patientInfo.uniformityCellSize" name="uniformityCellSize" placeholder="Uniformity Cell Size" class="md-full-width"
+            type="number" max="10" min="1">
         </md-input>
-        <md-input placeholder="Uniformity of Cell Shape" type="number" max="10" min="1" class="md-full-width">
+        <md-input required [(ngModel)]="patientInfo.uniformityCellShape" name="uniformityCellShape" placeholder="Uniformity of Cell Shape"
+            type="number" max="10" min="1" class="md-full-width">
         </md-input>
-        <md-input placeholder="Marginal Adhesion" type="number" max="10" min="1" class="md-full-width">
+        <md-input required [(ngModel)]="patientInfo.marginalAdhesion" name="marginalAdhesion" placeholder="Marginal Adhesion" type="number"
+            max="10" min="1" class="md-full-width">
         </md-input>
-        <md-input placeholder="Single Epithelial Cell Size" type="number" max="10" min="1" class="md-full-width">
+        <md-input required [(ngModel)]="patientInfo.singleEpithelialCellsize" name="singleEpithelialCellsize" placeholder="Single Epithelial Cell Size"
+            type="number" max="10" min="1" class="md-full-width">
         </md-input>
-        <md-input placeholder="Bare Nuclei" type="number" max="10" min="1" class="md-full-width">
+        <md-input required [(ngModel)]="patientInfo.bareNuclei" name="bareNuclei" placeholder="Bare Nuclei" type="number" max="10" min="1"
+            class="md-full-width">
         </md-input>
-        <md-input placeholder="Bland Chromatin" type="number" max="10" min="1" class="md-full-width">
+        <md-input required [(ngModel)]="patientInfo.blandChromatin" name="blandChromatin" placeholder="Bland Chromatin" type="number" max="10"
+            min="1" class="md-full-width">
         </md-input>
-        <md-input placeholder="Normal Nucleoli" type="number" max="10" min="1" class="md-full-width">
+        <md-input required [(ngModel)]="patientInfo.normalNucleoli" name="normalNucleoli" placeholder="Normal Nucleoli" type="number" max="10"
+            min="1" class="md-full-width">
         </md-input>
-        <md-input placeholder="Mitoses" type="number" max="10" min="1" class="md-full-width">
+        <md-input required [(ngModel)]="patientInfo.mitoses" name="mitoses" placeholder="Mitoses" type="number" max="10" min="1" class="md-full-width">
         </md-input>
+        <button type="submit" [disabled]="!patientForm.form.valid" md-raised-button md-tooltip="Breast cancer">Breast cancer diagnosis</button>
     </form>
-    <button (click)="checkBreastCancerDiagnosis()" md-raised-button md-tooltip="Breast cancer">Breast cancer diagnosis</button>
 </md-card>
-<md-card class="info-diagnosis">
+<md-card class="info-diagnosis" *ngIf="showCancerInfo" [ngClass]="(hasBreastCancer)?'red-info':'green-info'">
     <div class="cancer-notify">
         <span>
           <i class="material-icons app-input-icon">warning</i>
-      </span>This patient have signs and Symptoms of<span> Breast Cancer</span>
+      </span>
+      <label *ngIf="hasBreastCancer">This patient have</label>
+      <label *ngIf="!hasBreastCancer"> This patient doesn't have</label> signs and Symptoms of<span> Breast Cancer</span>
+    </div>   
+    <div *ngIf="hasBreastCancer" class="treatment-info">
+        <form #treatmentForm="ngForm" (ngSubmit)="generateTreatment()">
+            <md-input type="number" required [(ngModel)]="treatmentInfo.weight" name="weight" placeholder="Weight (kg)" max="10" min="1" class="md-full-width">
+            </md-input>
+            <md-input placeholder="Height (cm)" required [(ngModel)]="treatmentInfo.height" name="height" class="md-full-width" type="number" max="10" min="1">
+            </md-input>
+            <button type="submit" [disabled]="!patientForm.form.valid" md-raised-button md-tooltip="Treatment">Generate treatment</button>
+        </form>
     </div>
-    <form>
-        <md-input type="number" placeholder="Weight (kg)" max="10" min="1" class="md-full-width">
-        </md-input>
-        <md-input placeholder="Height (cm)" class="md-full-width" type="number" max="10" min="1">
-        </md-input>
-    </form>
-    <button md-raised-button md-tooltip="Treatment">Generate treatment</button>
 </md-card>
 <div class="clear"></div>
-<md-card>
-    <md-spinner class="app-spinner"></md-spinner>
-    <md-spinner color="accent" class="app-spinner"></md-spinner>
-</md-card>

@@ -1,46 +1,39 @@
 import { Component } from '@angular/core';
 import { MlService } from '../../services/azureml.service';
+import { Patient } from './patient';
+import { PredictiveResponse } from './predictiveResponse';
 
 @Component({
     selector: 'patient-info',
     templateUrl: 'js/app/components/patient-info/patient-info.html',
-    providers:[MlService]
+    providers: [MlService]
 })
 export class PatientInfo {
     errorMessage: string;
-    predictiveResponse: any;
-    private info: any = {
-        "Inputs": {
-            "input1": [
-                {
-                    "id": 1,
-                    "clumpThickness": 1,
-                    "uniformityCellSize": 1,
-                    "uniformityCellShape": 1,
-                    "marginalAdhesion": 1,
-                    "singleEpithelialCellsize": 1,
-                    "bareNuclei": 1,
-                    "blandChromatin": 1,
-                    "normalNucleoli": 1,
-                    "mitoses": 1,
-                    "class": 1
-                }
-            ]
-        },
-        "GlobalParameters": {}
-    };
+    public showCancerInfo = false;
+    public hasBreastCancer = false
+    public patientInfo: Patient = new Patient({ class: 0 });
+    public treatmentInfo: any = {};
     constructor(private mlService: MlService) {
 
     }
     checkBreastCancerDiagnosis() {
-        this.mlService.predictiveBreastCancer(this.info)
+        this.mlService.predictiveBreastCancer(this.patientInfo)
             .subscribe(
             predictiveResponse => {
-                console.log(predictiveResponse);
+                this.showCancerInfo = true;
+                this.hasBreastCancer = !!+predictiveResponse.Results.output1[0]['Scored Labels'];
             },
             error => this.errorMessage = error
             );
     }
+    generateTreatment() {
+        this.mlService.generateTreatment(this.treatmentInfo)
+            .subscribe(
+            treatmentResponse => {
 
-
+            }
+            ),
+            error => this.errorMessage = error;
+    }
 }
