@@ -192,10 +192,14 @@ div.clear{
   padding: 20px;
 }
 
-.notifications{
+.notifications-panel{
+  float:right;
+}
+
+.notifications-panel .notifications{
   background-color: #f8f8a2;
   width: 200px;
-  float: right;
+  float: left;
 }
 
 .logo-plain{
