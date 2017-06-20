@@ -4,12 +4,13 @@
         <p>{{notification.description}}</p>
         <span class="notif-date ">{{notification.date | date:'shortDate'}}</span>
     </md-card>
-    <md-card class="app-input-section " *ngFor="let regimen of treatment.regimens ">
+    <md-card class="app-input-section " *ngFor="let regimen of treatment.regimens">
         <h4>Regimen: {{regimen.name}}</h4>
-        <div class="chemotherapy-cycle " *ngFor="let cycle of regimen.cycles ">
+        <div class="chemotherapy-cycle " *ngFor="let cycle of regimen.cycles; let last=last">
             <div class="title ">{{cycle.name}}</div>
             <span class="start-date ">{{cycle.start | date:'shortDate'}}</span>
             <span class="end-date ">{{cycle.end | date:'shortDate'}}</span>
+            <label class="drug-title">drugs +</label>
             <div class="drugs-section ">
                 <div class="drug-info " *ngFor="let drug of cycle.drugs ">
                     <span class="drug-name ">{{drug.name}}</span>
@@ -18,5 +19,6 @@
                 </div>
             </div>
         </div>
+        <div *ngIf="!last" class="connector"></div>
     </md-card>
 </div>

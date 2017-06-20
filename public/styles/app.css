@@ -115,6 +115,22 @@ div.clear{
 }
 
 #treatment-section .chemotherapy-cycle{
-  width: 150px;
-  float:left;
+  width: 400px;
+  float: left;
+  margin: 20px;
+  border: 4px solid;
 }
+
+.chemotherapy-cycle .title{
+  border-bottom: 2px solid;
+  background: #03a9f4;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+hr{
+  height: 10px;
+  background-color: black;
+}
+
